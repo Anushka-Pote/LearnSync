@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Correction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            color: #007BFF;
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #007BFF;
+            transition: color 0.3s ease;
+        }
+
+        p {
+            white-space: pre-line;
+            transition: opacity 0.3s ease;
+        }
+
+        {% if corrected_passage %}
+        body {
+            background-color: #fff;
+        }
+
+        label {
+            color: #28a745;
+        }
+
+        textarea {
+            border-color: #28a745;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        p {
+            opacity: 0.9;
+        }
+        {% endif %}
+    </style>
+</head>
+<body>
+    <h1>Grammar Correction</h1>
+    <form method="post">
+        <label for="passage">Enter your passage:</label>
+        <textarea name="passage" rows="4" cols="50" placeholder="Write your text here...">{{ passage }}</textarea>
+        <br>
+        <input type="submit" value="Correct Grammar">
+    </form>
+    {% if corrected_passage %}
+        <h2>Corrected Passage:</h2>
+        <p>{{ corrected_passage }}</p>
+    {% endif %}
+</body>
+</html>
